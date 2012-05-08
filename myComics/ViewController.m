@@ -39,12 +39,14 @@
 }
 
 - (IBAction)abrirCamera:(id)sender {
+    
     imagePicker.sourceType  = UIImagePickerControllerSourceTypeCamera;
     #warning buscar forma de tratar formato de videos apenas
     
     [imagePicker setMediaTypes:[NSArray arrayWithObject:@"public.movie"]];
     [imagePicker setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
     [self presentModalViewController:imagePicker animated:YES];
+    
 }
 
 @end
