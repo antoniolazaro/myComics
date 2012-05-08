@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+    UIImagePickerController *imagePicker;
+}
+
+- (IBAction)abrirBiblioteca:(id)sender;
+
+- (IBAction)abrirCamera:(id)sender;
 
 @end

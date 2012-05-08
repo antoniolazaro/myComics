@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -29,6 +31,20 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (IBAction)abrirBiblioteca:(id)sender {
+    imagePicker.sourceType  = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentModalViewController:imagePicker animated:YES];
+}
+
+- (IBAction)abrirCamera:(id)sender {
+    imagePicker.sourceType  = UIImagePickerControllerSourceTypeCamera;
+    #warning buscar forma de tratar formato de videos apenas
+    
+    [imagePicker setMediaTypes:[NSArray arrayWithObject:@"public.movie"]];
+    [imagePicker setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
+    [self presentModalViewController:imagePicker animated:YES];
 }
 
 @end
