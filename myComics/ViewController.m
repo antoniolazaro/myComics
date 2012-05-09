@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewController
+@synthesize imageView;
 
 - (void)viewDidLoad
 {
@@ -24,6 +25,7 @@
 
 - (void)viewDidUnload
 {
+    [self setImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -46,6 +48,36 @@
     [imagePicker setMediaTypes:[NSArray arrayWithObject:@"public.movie"]];
     [imagePicker setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
     [self presentModalViewController:imagePicker animated:YES];
+    
+}
+
+- (IBAction)build {
+    
+    UIImageView *backGround =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    
+    backGround.backgroundColor = [UIColor blackColor];
+    
+    UIImageView *ironMan =  [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 200)];
+    
+    ironMan.image =[UIImage imageNamed:@"ironman.jpg"];
+    
+    UIImageView *hulk =  [[UIImageView alloc] initWithFrame:CGRectMake(10, 220, 145, 200)];
+    
+    hulk.image =[UIImage imageNamed:@"hulk.jpg"];
+    
+    UIImageView *thor =  [[UIImageView alloc] initWithFrame:CGRectMake(165, 220, 145, 200)];
+    
+    thor.image =[UIImage imageNamed:@"thor.jpg"];
+    
+    
+    for(UIView *subview in [self.view subviews]) {
+        [subview removeFromSuperview];
+    }
+    
+    [self.view addSubview:backGround];
+    [self.view addSubview:ironMan];
+    [self.view addSubview:hulk];
+    [self.view addSubview:thor];
     
 }
 

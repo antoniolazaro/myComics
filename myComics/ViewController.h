@@ -13,9 +13,12 @@
 {
     UIImagePickerController *imagePicker;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 - (IBAction)abrirBiblioteca:(id)sender;
 
 - (IBAction)abrirCamera:(id)sender;
+
+- (IBAction)build;
 
 @end

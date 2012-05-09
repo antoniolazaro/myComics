@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395008F8155B20D800AA04FB /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008F6155B20D800AA04FB /* ironman.jpg */; };
+		395008FB155B20F300AA04FB /* hulk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008FA155B20F300AA04FB /* hulk.jpg */; };
+		39500946155B2B9200AA04FB /* thor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39500945155B2B9200AA04FB /* thor.jpg */; };
 		7D7A5F7815587FFC003014E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7A5F7715587FFC003014E8 /* UIKit.framework */; };
 		7D7A5F7A15587FFC003014E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7A5F7915587FFC003014E8 /* Foundation.framework */; };
 		7D7A5F7C15587FFC003014E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7A5F7B15587FFC003014E8 /* CoreGraphics.framework */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		395008F6155B20D800AA04FB /* ironman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ironman.jpg; sourceTree = "<group>"; };
+		395008FA155B20F300AA04FB /* hulk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hulk.jpg; sourceTree = "<group>"; };
+		39500945155B2B9200AA04FB /* thor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thor.jpg; sourceTree = "<group>"; };
 		7D7A5F7315587FFC003014E8 /* myComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7A5F7715587FFC003014E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7D7A5F7915587FFC003014E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,10 +56,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		395008F5155B20C200AA04FB /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				39500945155B2B9200AA04FB /* thor.jpg */,
+				395008FA155B20F300AA04FB /* hulk.jpg */,
+				395008F6155B20D800AA04FB /* ironman.jpg */,
+			);
+			name = pics;
+			sourceTree = "<group>";
+		};
 		7D7A5F6815587FFC003014E8 = {
 			isa = PBXGroup;
 			children = (
-				7D7A5F94155881FD003014E8 /* MediaPlayer.framework */,
 				7D7A5F7D15587FFC003014E8 /* myComics */,
 				7D7A5F7615587FFC003014E8 /* Frameworks */,
 				7D7A5F7415587FFC003014E8 /* Products */,
@@ -71,6 +86,7 @@
 		7D7A5F7615587FFC003014E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D7A5F94155881FD003014E8 /* MediaPlayer.framework */,
 				7D7A5F7715587FFC003014E8 /* UIKit.framework */,
 				7D7A5F7915587FFC003014E8 /* Foundation.framework */,
 				7D7A5F7B15587FFC003014E8 /* CoreGraphics.framework */,
@@ -81,6 +97,7 @@
 		7D7A5F7D15587FFC003014E8 /* myComics */ = {
 			isa = PBXGroup;
 			children = (
+				395008F5155B20C200AA04FB /* pics */,
 				7D7A5F8615587FFC003014E8 /* AppDelegate.h */,
 				7D7A5F8715587FFC003014E8 /* AppDelegate.m */,
 				7D7A5F8915587FFD003014E8 /* MainStoryboard.storyboard */,
@@ -154,6 +171,9 @@
 			files = (
 				7D7A5F8215587FFC003014E8 /* InfoPlist.strings in Resources */,
 				7D7A5F8B15587FFD003014E8 /* MainStoryboard.storyboard in Resources */,
+				395008F8155B20D800AA04FB /* ironman.jpg in Resources */,
+				395008FB155B20F300AA04FB /* hulk.jpg in Resources */,
+				39500946155B2B9200AA04FB /* thor.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +298,7 @@
 				7D7A5F9315587FFD003014E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
