@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     UIImagePickerController *imagePicker;
+    UIVideoEditorController *videoController;
 }
 
 - (IBAction)abrirBiblioteca:(id)sender;
