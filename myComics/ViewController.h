@@ -20,5 +20,6 @@
 - (IBAction)abrirCamera:(id)sender;
 
 - (IBAction)build;
+- (IBAction)build2:(id)sender;
 
 @end
