@@ -13,7 +13,6 @@
 @interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     UIImagePickerController *imagePicker;
-    UIVideoEditorController *videoController;
 }
 
 - (IBAction)abrirBiblioteca:(id)sender;
