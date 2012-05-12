@@ -133,25 +133,41 @@
         
         NSURL *url = [NSURL URLWithString:moviePath];
         
-        MPMoviePlayerController *movie = [[MPMoviePlayerController alloc] initWithContentURL:url];
+        imageFromVideo.image = [self getImagemFromVideo:url];
         
-        singleFrameImage = [movie thumbnailImageAtTime:1.0
-                                                     timeOption:MPMovieTimeOptionNearestKeyFrame];
+//        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum (moviePath)) {
+//            UISaveVideoAtPathToSavedPhotosAlbum (
+//                                                 moviePath, nil, nil, nil);
+//        }
+    }
+    [picker dismissModalViewControllerAnimated: YES];
+   
+}
+
+-(UIImage*) getImagemFromVideo: (NSURL *) url{
+    
+    AVURLAsset *myAsset = [[AVURLAsset alloc] initWithURL:url options:nil];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:myAsset];
+    
+    Float64 durationSeconds = CMTimeGetSeconds([myAsset duration]);
+    CMTime midpoint = CMTimeMakeWithSeconds(durationSeconds/2.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    
+    CGImageRef halfWayImage = [imageGenerator copyCGImageAtTime:midpoint actualTime:&actualTime error:&error];
+    
+    
+    if (halfWayImage != NULL) {
         
-        [movie stop];
+        NSString *actualTimeString = (__bridge_transfer NSString *)CMTimeCopyDescription(NULL, actualTime);
+        NSString *requestedTimeString = (__bridge_transfer NSString *)CMTimeCopyDescription(NULL, midpoint);
+        NSLog(@"got halfWayImage: Asked for %@, got %@", requestedTimeString, actualTimeString);
         
-        [picker dismissModalViewControllerAnimated: YES];
-        
-        //não renderiza a imagem
-        imageFromVideo.image = singleFrameImage;
-        
-        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum (moviePath)) {
-            UISaveVideoAtPathToSavedPhotosAlbum (
-                                                 moviePath, nil, nil, nil);
-        }
+        // Do something interesting with the image.
+        CGImageRelease(halfWayImage);
     }
     
-   
+    return [UIImage imageWithCGImage:halfWayImage];
 }
 
 
