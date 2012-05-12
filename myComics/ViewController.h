@@ -12,8 +12,10 @@
 
 @interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
+    UIImage *singleFrameImage;
     UIImagePickerController *imagePicker;
 }
+@property (strong, nonatomic) IBOutlet UIImageView *imageFromVideo;
 
 - (IBAction)abrirBiblioteca:(id)sender;
 

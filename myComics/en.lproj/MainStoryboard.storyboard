@@ -45,9 +45,16 @@
                                     <action selector="abrirBiblioteca:" destination="2" eventType="touchUpInside" id="OUp-ZK-YLA"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="eVU-4i-cgV">
+                                <rect key="frame" x="60" y="73" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imageFromVideo" destination="eVU-4i-cgV" id="g3d-uU-mNq"/>
+                    </connections>
                 </viewController>
             </objects>
         </scene>
@@ -58,6 +65,7 @@
             <relationships>
                 <relationship kind="action" name="abrirBiblioteca:"/>
                 <relationship kind="action" name="abrirCamera:"/>
+                <relationship kind="outlet" name="imageFromVideo" candidateClass="UIImageView"/>
             </relationships>
         </class>
     </classes>
