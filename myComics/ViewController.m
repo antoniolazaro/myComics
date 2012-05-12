@@ -14,19 +14,19 @@
 
 @implementation ViewController
 @synthesize imageFromVideo;
+@synthesize session;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.delegate = self;
 }
 
 - (void)viewDidUnload
 {
     imageFromVideo = nil;
     [self setImageFromVideo:nil];
+    [self setSession:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -37,137 +37,120 @@
 }
 
 - (IBAction)abrirBiblioteca:(id)sender {
-    imagePicker.sourceType  = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    [self presentModalViewController:imagePicker animated:YES];
 }
-
-/*
-- (IBAction)abrirCamera:(id)sender {
-    imagePicker.sourceType  = UIImagePickerControllerSourceTypeCamera;
-    #warning buscar forma de tratar formato de videos apenas
-    imagePicker allowsEditing = NO;
-    [imagePicker setMediaTypes:[NSArray arrayWithObject: (NSString *)kUTTypeMovie]];
-    [imagePicker setCameraCaptureMode:UIImagePickerControllerCameraCaptureModeVideo];
-    [self presentModalViewController:imagePicker animated:YES];
-}
-*/
-
-/* Novos testes */
 
 - (IBAction) abrirCamera:(id) sender {
-    [self startCameraControllerFromViewController: self
-                                    usingDelegate: self];
+    [self setupCaptureSession];
 }
 
-- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
-                                   usingDelegate: (id <UIImagePickerControllerDelegate,
-                                                   UINavigationControllerDelegate>) delegate {
-    
-    if (([UIImagePickerController isSourceTypeAvailable:
-          UIImagePickerControllerSourceTypeCamera] == NO)
-        || (delegate == nil)
-        || (controller == nil))
-        return NO;
-    
-    
-    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
-    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    // Displays a control that allows the user to choose picture or
-    // movie capture, if both are available:
-    cameraUI.mediaTypes =
-    [UIImagePickerController availableMediaTypesForSourceType:
-     UIImagePickerControllerSourceTypeCamera];
-    
-    // Hides the controls for moving & scaling pictures, or for
-    // trimming movies. To instead show the controls, use YES.
-    cameraUI.allowsEditing = NO;
-    
-    cameraUI.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-    
-    cameraUI.delegate = delegate;
-    
-    [controller presentModalViewController: cameraUI animated: YES];
-    return YES;
-}
-
-// For responding to the user tapping Cancel.
-- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
-    
-    [[picker parentViewController] dismissModalViewControllerAnimated: YES];
-}
-
-// For responding to the user accepting a newly-captured picture or movie
-- (void) imagePickerController: (UIImagePickerController *) picker
- didFinishPickingMediaWithInfo: (NSDictionary *) info {
-    
-    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-    UIImage *originalImage, *editedImage, *imageToSave;
-    
-    // Handle a still image capture
-    if (CFStringCompare ((__bridge_retained CFStringRef) mediaType, kUTTypeImage, 0)
-        == kCFCompareEqualTo) {
-        
-        editedImage = (UIImage *) [info objectForKey:
-                                   UIImagePickerControllerEditedImage];
-        originalImage = (UIImage *) [info objectForKey:
-                                     UIImagePickerControllerOriginalImage];
-        
-        if (editedImage) {
-            imageToSave = editedImage;
-        } else {
-            imageToSave = originalImage;
-        }
-        
-        // Save the new image (original or edited) to the Camera Roll
-        UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
-    }
-    
-    // Handle a movie capture
-    if (CFStringCompare ((__bridge_retained CFStringRef) mediaType, kUTTypeMovie, 0)
-        == kCFCompareEqualTo) {
-        
-        NSString *moviePath = [[info objectForKey:
-                                UIImagePickerControllerMediaURL] path];
-        
-        NSURL *url = [NSURL URLWithString:moviePath];
-        
-        imageFromVideo.image = [self getImagemFromVideo:url];
-        
-//        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum (moviePath)) {
-//            UISaveVideoAtPathToSavedPhotosAlbum (
-//                                                 moviePath, nil, nil, nil);
-//        }
-    }
-    [picker dismissModalViewControllerAnimated: YES];
-   
-}
-
--(UIImage*) getImagemFromVideo: (NSURL *) url{
-    
-    AVURLAsset *myAsset = [[AVURLAsset alloc] initWithURL:url options:nil];
-    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:myAsset];
-    
-    Float64 durationSeconds = CMTimeGetSeconds([myAsset duration]);
-    CMTime midpoint = CMTimeMakeWithSeconds(durationSeconds/2.0, 600);
+// Create and configure a capture session and start it running
+- (void)setupCaptureSession 
+{
     NSError *error = nil;
-    CMTime actualTime;
     
-    CGImageRef halfWayImage = [imageGenerator copyCGImageAtTime:midpoint actualTime:&actualTime error:&error];
+    // Create the session
+    session = [[AVCaptureSession alloc] init];
     
+    // Configure the session to produce lower resolution video frames, if your 
+    // processing algorithm can cope. We'll specify medium quality for the
+    // chosen device.
+    session.sessionPreset = AVCaptureSessionPresetMedium;
     
-    if (halfWayImage != NULL) {
-        
-        NSString *actualTimeString = (__bridge_transfer NSString *)CMTimeCopyDescription(NULL, actualTime);
-        NSString *requestedTimeString = (__bridge_transfer NSString *)CMTimeCopyDescription(NULL, midpoint);
-        NSLog(@"got halfWayImage: Asked for %@, got %@", requestedTimeString, actualTimeString);
-        
-        // Do something interesting with the image.
-        CGImageRelease(halfWayImage);
+    // Find a suitable AVCaptureDevice
+    AVCaptureDevice *device = [AVCaptureDevice
+                               defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    // Create a device input with the device and add it to the session.
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device 
+                                                                        error:&error];
+    if (!input) {
+        // Handling the error appropriately.
     }
+    [session addInput:input];
     
-    return [UIImage imageWithCGImage:halfWayImage];
+    // Create a VideoDataOutput and add it to the session
+    AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
+    [session addOutput:output];
+    
+    // Configure your output.
+    dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
+    [output setSampleBufferDelegate:self queue:queue];
+    dispatch_release(queue);
+    
+    // Specify the pixel format
+    output.videoSettings = 
+    [NSDictionary dictionaryWithObject:
+     [NSNumber numberWithInt:kCVPixelFormatType_32BGRA] 
+                                forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+    
+    
+    // If you wish to cap the frame rate to a known value, such as 15 fps, set 
+    // minFrameDuration.
+    output.minFrameDuration = CMTimeMake(1, 15);
+   // -[<AVCaptureVideoDataOutput: 0x164280> setMinFrameDuration:] is deprecated.  Please use AVCaptureConnection's -setVideoMinFrameDuration:
+    
+    // Start the session running to start the flow of data
+    [session startRunning];
+    
+}
+
+- (IBAction)pararCamera:(id)sender{
+    [session stopRunning];
+
+}
+
+// Delegate routine that is called when a sample buffer was written
+- (void)captureOutput:(AVCaptureOutput *)captureOutput 
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
+       fromConnection:(AVCaptureConnection *)connection
+{ 
+    // Create a UIImage from the sample buffer data
+    UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
+    
+    imageFromVideo.image = image;
+    
+}
+
+// Create a UIImage from sample buffer data
+- (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer 
+{
+    // Get a CMSampleBuffer's Core Video image buffer for the media data
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+    // Lock the base address of the pixel buffer
+    CVPixelBufferLockBaseAddress(imageBuffer, 0); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer); 
+    
+    // Get the number of bytes per row for the pixel buffer
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
+    // Get the pixel buffer width and height
+    size_t width = CVPixelBufferGetWidth(imageBuffer); 
+    size_t height = CVPixelBufferGetHeight(imageBuffer); 
+    
+    // Create a device-dependent RGB color space
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
+    
+    // Create a bitmap graphics context with the sample buffer data
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, 
+                                                 bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
+    // Create a Quartz image from the pixel data in the bitmap graphics context
+    CGImageRef quartzImage = CGBitmapContextCreateImage(context); 
+    // Unlock the pixel buffer
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    // Free up the context and color space
+    CGContextRelease(context); 
+    CGColorSpaceRelease(colorSpace);
+    
+    // Create an image object from the Quartz image
+    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    
+    // Release the Quartz image
+    CGImageRelease(quartzImage);
+    
+    return (image);
 }
 
 

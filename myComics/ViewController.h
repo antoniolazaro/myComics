@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import <CoreVideo/CoreVideo.h>
 
-@interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     UIImage *singleFrameImage;
     UIImagePickerController *imagePicker;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imageFromVideo;
+@property (strong, nonatomic) AVCaptureSession *session;
 
 - (IBAction)abrirBiblioteca:(id)sender;
 
 - (IBAction)abrirCamera:(id)sender;
+
+- (IBAction)pararCamera:(id)sender;
 
 @end
