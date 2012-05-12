@@ -135,8 +135,13 @@
         
         MPMoviePlayerController *movie = [[MPMoviePlayerController alloc] initWithContentURL:url];
         
-        singleFrameImage = [movie thumbnailImageAtTime:1
-                                                     timeOption:MPMovieTimeOptionExact];
+        singleFrameImage = [movie thumbnailImageAtTime:1.0
+                                                     timeOption:MPMovieTimeOptionNearestKeyFrame];
+        
+        [movie stop];
+        
+        [picker dismissModalViewControllerAnimated: YES];
+        
         //não renderiza a imagem
         imageFromVideo.image = singleFrameImage;
         
@@ -146,7 +151,7 @@
         }
     }
     
-    [picker dismissModalViewControllerAnimated: YES];
+   
 }
 
 
