@@ -87,8 +87,19 @@
     
     // If you wish to cap the frame rate to a known value, such as 15 fps, set 
     // minFrameDuration.
-    output.minFrameDuration = CMTimeMake(1, 15);
-   // -[<AVCaptureVideoDataOutput: 0x164280> setMinFrameDuration:] is deprecated.  Please use AVCaptureConnection's -setVideoMinFrameDuration:
+    AVCaptureConnection *conn = [output connectionWithMediaType:AVMediaTypeVideo];
+    
+    
+    CMTimeShow(conn.videoMinFrameDuration);
+    CMTimeShow(conn.videoMaxFrameDuration);
+    
+    if (conn.supportsVideoMinFrameDuration)
+        conn.videoMinFrameDuration = CMTimeMake(1, 15);
+    if (conn.supportsVideoMaxFrameDuration)
+        conn.videoMaxFrameDuration = CMTimeMake(1, 30);
+    
+    CMTimeShow(conn.videoMinFrameDuration);
+    CMTimeShow(conn.videoMaxFrameDuration);
     
     // Start the session running to start the flow of data
     [session startRunning];
