@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CameraRollViewController : UIViewController{
-    
+    ALAssetsLibrary* library;
 }
 
 @end
