@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import <CoreMedia/CoreMedia.h>
-#import <CoreVideo/CoreVideo.h>
 
 @interface ViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate>
 {
