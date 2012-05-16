@@ -48,10 +48,6 @@
     
 }
 
-- (IBAction) abrirCamera:(id) sender {
-    [self setupCaptureSession];
-}
-
 
 // Create and configure a capture session and start it running
 - (void)setupCaptureSession 
@@ -112,7 +108,8 @@
     
     // Start the session running to start the flow of data
     [session startRunning];
-    
+}
+
 - (IBAction)abrirCamera:(id)sender {
     
     imagePicker.sourceType  = UIImagePickerControllerSourceTypeCamera;
@@ -277,6 +274,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     return (image);
 }
-
-
 @end
+
+
