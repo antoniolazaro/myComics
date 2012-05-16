@@ -1,3 +1,11 @@
 .DS_Store
+*.swp
+*~.nib
 
-myComics.xcodeproj/project.xcworkspace/xcuserdata/antoniolazaroborges.xcuserdatad/UserInterfaceState.xcuserstate
+build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
