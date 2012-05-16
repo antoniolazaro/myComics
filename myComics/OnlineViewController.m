@@ -97,10 +97,12 @@
     CMTimeShow(conn.videoMinFrameDuration);
     CMTimeShow(conn.videoMaxFrameDuration);
     
-    if (conn.supportsVideoMinFrameDuration)
-        conn.videoMinFrameDuration = CMTimeMake(1, 15);
-    if (conn.supportsVideoMaxFrameDuration)
-        conn.videoMaxFrameDuration = CMTimeMake(1, 30);
+    if (conn.supportsVideoMinFrameDuration){
+        conn.videoMinFrameDuration = CMTimeMake(1, 30);
+    }
+    if (conn.supportsVideoMaxFrameDuration){
+        conn.videoMaxFrameDuration = CMTimeMake(1, 120);
+    }
     
     CMTimeShow(conn.videoMinFrameDuration);
     CMTimeShow(conn.videoMaxFrameDuration);
@@ -119,14 +121,11 @@
 - (IBAction) stopRecording {
     
     [captureSession stopRunning];
-    
+    NSLog(@"Tamanho total do array: %d",imagesList.count);
     [self createImage:imagesList];
     
 }
 
-- (IBAction) breakVideoInFrames{
-    NSLog(@"Tamanho total do array: %d",imagesList.count);
-}
 
 /* Método do delegate AVCaptureVideoDataOutputSampleBufferDelegate que escreve o resultado da saida da captura
  */
@@ -216,7 +215,7 @@
         [subview removeFromSuperview];
     }
 
-    CGSize newSize = CGSizeMake(620, 877);
+    CGSize newSize = CGSizeMake(620, 877*3);
 
     int linha = 1;
     int coluna = 1;
@@ -224,16 +223,20 @@
     // Inicia a escrita da HQ
     UIGraphicsBeginImageContext( newSize );
 
-    for(UIImage *image in images) {
+    for (int i = 0; i < images.count; i++) {
         
-        // escreve iron como um quadrinho maior na linha 1 e coluna 1 ocupando toda a linha
-        [image drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:YES]];
-        
-        if (coluna == 2) {
-            linha++;
-            coluna = 1;
-        } else {
-            coluna++;
+        if (i % 8 == 0) {
+            
+            // escreve iron como um quadrinho maior na linha 1 e coluna 1 ocupando toda a linha
+            [[images objectAtIndex:i] drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO]];
+            
+            if (coluna == 2) {
+                linha++;
+                coluna = 1;
+            } else {
+                coluna++;
+            }
+
         }
         
     }
@@ -243,10 +246,15 @@
     UIGraphicsEndImageContext();
     
     // cria o imageView para mostrar a imagem
-    UIImageView *newImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    UIImageView *newImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460*3)];
     newImageView.image = comicImage;
     
-    [self.view addSubview:newImageView];
+    UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    [scrollView setContentSize:CGSizeMake(320, 877*3)];
+    [scrollView addSubview:newImageView];
+    
+    
+    [self.view addSubview:scrollView];
     
 }
 
