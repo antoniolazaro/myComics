@@ -116,8 +116,12 @@
 
 }
 
-- (IBAction) stopRecording{
-  [captureSession stopRunning];  
+- (IBAction) stopRecording {
+    
+    [captureSession stopRunning];
+    
+    [self createImage:imagesList];
+    
 }
 
 - (IBAction) breakVideoInFrames{
@@ -176,5 +180,74 @@
     return (image);
 }
 
+- (CGRect) criarQuadroNalinha:(int)linha naColuna:(int)coluna comQuadrinhoMaior:(BOOL)quadrinhoMaior {
+    
+    // diminui pois é baseado em zero
+    coluna--;
+    linha--;
+    
+    int espaco = 40;
+    int larguraQuadrinhoMaior = 540;
+    int larguraQuadrinhoMenor = 250;
+    int alturaQuadrinho = 250;
+    
+    // sempre tem o espaco inicial e depois um conjunto quadrinho + espaco para cada linha
+    int y = espaco + linha * (alturaQuadrinho + espaco);
+    int x;
+    int larguraQuadrinho;
+    
+    if (quadrinhoMaior) {
+        // linha com quadrinho maior é espaco / quadrinho / espaco
+        x = espaco;
+        larguraQuadrinho = larguraQuadrinhoMaior;
+    } else {
+        // quadrinho menor é espaco e depois um conjunto quadrinho + espaco para cada coluna
+        x = espaco + coluna * (larguraQuadrinhoMenor + espaco);
+        larguraQuadrinho = larguraQuadrinhoMenor;
+    }
+    
+    return CGRectMake(x, y, larguraQuadrinho, alturaQuadrinho);
+    
+}
+
+- (void)createImage:(NSMutableArray*)images {
+    
+    for(UIView *subview in [self.view subviews]) {
+        [subview removeFromSuperview];
+    }
+
+    CGSize newSize = CGSizeMake(620, 877);
+
+    int linha = 1;
+    int coluna = 1;
+    
+    // Inicia a escrita da HQ
+    UIGraphicsBeginImageContext( newSize );
+
+    for(UIImage *image in images) {
+        
+        // escreve iron como um quadrinho maior na linha 1 e coluna 1 ocupando toda a linha
+        [image drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:YES]];
+        
+        if (coluna == 2) {
+            linha++;
+            coluna = 1;
+        } else {
+            coluna++;
+        }
+        
+    }
+
+    UIImage *comicImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    // cria o imageView para mostrar a imagem
+    UIImageView *newImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    newImageView.image = comicImage;
+    
+    [self.view addSubview:newImageView];
+    
+}
 
 @end
