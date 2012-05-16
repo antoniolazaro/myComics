@@ -16,11 +16,17 @@
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imageFromVideo;
 @property (strong, nonatomic) AVCaptureSession *session;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 
 - (IBAction)abrirBiblioteca:(id)sender;
 
 - (IBAction)abrirCamera:(id)sender;
 
 - (IBAction)pararCamera:(id)sender;
+
+- (IBAction)build;
+- (IBAction)build2:(id)sender;
+
 
 @end
