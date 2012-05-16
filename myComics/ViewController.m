@@ -40,6 +40,7 @@
     [self presentModalViewController:imagePicker animated:YES];
 }
 
+
 - (IBAction)abrirCamera:(id)sender {
     
     imagePicker.sourceType  = UIImagePickerControllerSourceTypeCamera;
@@ -110,6 +111,49 @@
     return CGRectMake(x, y, larguraQuadrinho, alturaQuadrinho);
     
 }
+-(IBAction)saveImage:(UILongPressGestureRecognizer *)longPress{
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Salvar Quadrinho" message:@"Quadrinho Salvo com Sucesso" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//    
+//    [alert show];
+//    
+    [self becomeFirstResponder];
+    
+    UIMenuController *menu = [UIMenuController sharedMenuController];    
+    
+    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Apagar" action:@selector(apagarImage:)];
+    
+    [menu setMenuItems:[NSArray arrayWithObjects:menuItem, nil]];
+    
+    menu.arrowDirection = UIMenuControllerArrowDefault; 
+    
+    
+    CGPoint localToque = [longPress locationInView:self.view]; 
+    
+    
+    [menu setTargetRect:CGRectMake(localToque.x, localToque.y, 0, 0) inView:self.view];
+    
+    [menu setMenuVisible:YES animated:YES];
+    
+}
+
+
+-(void)apagarImage:(UILongPressGestureRecognizer *)longPress{
+    
+    UIImage *img = (UIImage *) longPress.view; 
+    
+    UIImageWriteToSavedPhotosAlbum(img, self, @selector(imageSaved), nil);
+    
+} 
+
+- (void) imageSaved: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Image has been saved!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    
+    [alert show];
+    
+    
+}
 
 - (IBAction)build2:(id)sender {
     
@@ -143,8 +187,27 @@
     UIImageView *newImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     newImageView.image = comicImage;
     
+    //Cria o evento de LongPress gesture
+    UILongPressGestureRecognizer  *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveImage:)];
+    
+    longPress.delegate =self ; 
+    
+    [self.view addGestureRecognizer:longPress];
+    
     [self.view addSubview:newImageView];
     
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}   
+
+-(IBAction)clickImage:(UIGestureRecognizer *)tap{
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Image has been saved!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    
+    [alert show];
+
 }
 
 @end

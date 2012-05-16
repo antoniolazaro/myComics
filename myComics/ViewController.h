@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface ViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@interface ViewController : UIViewController<UIImagePickerControllerDelegate,UIGestureRecognizerDelegate, UINavigationControllerDelegate>
 {
     UIImagePickerController *imagePicker;
 }
@@ -19,7 +20,9 @@
 
 - (IBAction)abrirCamera:(id)sender;
 
+- (IBAction)saveImage:(UILongPressGestureRecognizer *)longPress;
 - (IBAction)build;
 - (IBAction)build2:(id)sender;
+- (IBAction)clickImage:(UIGestureRecognizer *)tap;
 
 @end
