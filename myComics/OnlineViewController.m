@@ -249,12 +249,35 @@
     UIImageView *newImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460*3)];
     newImageView.image = comicImage;
     
+    comic = comicImage;
+    
     UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     [scrollView setContentSize:CGSizeMake(320, 877*3)];
     [scrollView addSubview:newImageView];
     
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(save:)];
+    
+    [tap setNumberOfTapsRequired:2];
+    [tap setNumberOfTouchesRequired:1];
+    
     [self.view addSubview:scrollView];
+    
+}
+
+-(void)save:(UIImage *) image{
+    
+    UIImageWriteToSavedPhotosAlbum(comic, self, @selector(saveComplete:didFinishSavingWithError:contextInfo:), nil);
+    
+}
+
+-(void)saveComplete:(UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo{
+    
+    if(! [error isEqual:[NSNull null]]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Salvo!" message:@"Imagem salva com sucesso!!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        
+        [alert show];        
+    }
     
 }
 
