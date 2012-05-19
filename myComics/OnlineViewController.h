@@ -11,6 +11,7 @@
 
 @interface OnlineViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>{
     NSMutableArray *imagesList;
+    UIImage *comic;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *previewUIImageView;
