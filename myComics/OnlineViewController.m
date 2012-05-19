@@ -261,6 +261,9 @@
     [tap setNumberOfTapsRequired:2];
     [tap setNumberOfTouchesRequired:1];
     
+    // Add the gesture to the view
+    [[self view] addGestureRecognizer:tap];
+    
     [self.view addSubview:scrollView];
     
 }
