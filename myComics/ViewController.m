@@ -208,6 +208,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     return (image);
 }
+
 @end
 
 

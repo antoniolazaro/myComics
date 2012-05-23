@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreImage/CoreImage.h>
 
 @interface CameraRollViewController : UIViewController{
     ALAssetsLibrary* library;
+    
 }
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmented;
+
+- (IBAction)changeFilter;
 
 @end

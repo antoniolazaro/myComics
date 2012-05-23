@@ -59,9 +59,33 @@
                     <view key="view" contentMode="scaleToFill" id="5mO-jv-CbJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rafaeli.jpg" id="3y6-ZN-9z3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="YhS-SP-VzA">
+                                <rect key="frame" x="0.0" y="321" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeFilter" destination="VuD-id-BDT" eventType="valueChanged" id="jQD-Fi-zwD"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera Roll" id="7On-jL-eqT"/>
+                    <connections>
+                        <outlet property="imageView" destination="3y6-ZN-9z3" id="ffc-yn-hHe"/>
+                        <outlet property="segmented" destination="YhS-SP-VzA" id="dLp-Ku-lmU"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="917" y="-526"/>
@@ -150,21 +174,9 @@
             <point key="canvasLocation" x="498" y="-819"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CameraRollViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraRollViewController.h"/>
-        </class>
-        <class className="OnlineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OnlineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="breakVideoInFrames"/>
-                <relationship kind="action" name="startRecording"/>
-                <relationship kind="action" name="stopRecording"/>
-                <relationship kind="outlet" name="previewUIImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="previewUIView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
+    <resources>
+        <image name="rafaeli.jpg" width="16" height="16"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
