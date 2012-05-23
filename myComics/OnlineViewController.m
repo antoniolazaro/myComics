@@ -132,7 +132,7 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
    
     UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
-    
+        
     previewUIImageView.image = image;
     
     [imagesList addObject:image];
@@ -171,7 +171,12 @@
     CGColorSpaceRelease(colorSpace);
     
     // Create an image object from the Quartz image
-    UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    //UIImage *image = [UIImage imageWithCGImage:quartzImage];
+    
+    //cria a imagem com a orientação correta...
+    UIImage *image = [UIImage imageWithCGImage:quartzImage scale:1.0
+                  orientation:UIImageOrientationRight]; 
+
     
     // Release the Quartz image
     CGImageRelease(quartzImage);
