@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CoreImage/CoreImage.h>
 
 @interface OnlineViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>{
     NSMutableArray *imagesList;

@@ -10,6 +10,7 @@
 		395008F8155B20D800AA04FB /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008F6155B20D800AA04FB /* ironman.jpg */; };
 		395008FB155B20F300AA04FB /* hulk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008FA155B20F300AA04FB /* hulk.jpg */; };
 		39500946155B2B9200AA04FB /* thor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39500945155B2B9200AA04FB /* thor.jpg */; };
+		39D5730C156D91D800A6CD3D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21FAE61560C2240048E1DE /* CoreImage.framework */; };
 		7D21FAD315609DC90048E1DE /* OnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D21FAD215609DC90048E1DE /* OnlineViewController.m */; };
 		7D21FADA1560BBE90048E1DE /* CameraRollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D21FAD91560BBE80048E1DE /* CameraRollViewController.m */; };
 		7D21FAE01560BF4E0048E1DE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21FADF1560BF4E0048E1DE /* AssetsLibrary.framework */; };
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D5730C156D91D800A6CD3D /* CoreImage.framework in Frameworks */,
 				7D21FAE91560C2550048E1DE /* CoreVideo.framework in Frameworks */,
 				7D21FAE51560C2160048E1DE /* CoreMedia.framework in Frameworks */,
 				7D21FAE31560C1EA0048E1DE /* CoreGraphics.framework in Frameworks */,

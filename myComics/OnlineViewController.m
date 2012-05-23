@@ -225,15 +225,36 @@
     int linha = 1;
     int coluna = 1;
     
+    UIImage *currentImage = nil; 
+    
     // Inicia a escrita da HQ
     UIGraphicsBeginImageContext( newSize );
 
     for (int i = 0; i < images.count; i++) {
         
         if (i % 8 == 0) {
+
+            currentImage = [images objectAtIndex:i];
+
+            //Aplica um filtro Qualquer
+//            CIImage *image = [CIImage imageWithContentsOfURL:fileNameAndPath];
+
+            CIImage *ciImage = currentImage.CIImage;
+            
+            CIContext *context = [CIContext contextWithOptions:nil];
+            
+            CIFilter *filter = [CIFilter filterWithName:@"CIColorControls" keysAndValues: kCIInputImageKey, ciImage, @"inputSaturation",[NSNumber numberWithFloat:0.0],
+                      @"inputBrightness",[NSNumber numberWithFloat:0.0],
+                      @"inputContrast", [NSNumber numberWithFloat:0.8], nil];
+            
+            ciImage = [filter outputImage];
+            
+            CGImageRef cgimg = [context createCGImage:ciImage fromRect:[ciImage extent]];
+            
+            currentImage = [UIImage imageWithCGImage:cgimg];
             
             // escreve iron como um quadrinho maior na linha 1 e coluna 1 ocupando toda a linha
-            [[images objectAtIndex:i] drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO]];
+            [currentImage drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO]];
             
             if (coluna == 2) {
                 linha++;
