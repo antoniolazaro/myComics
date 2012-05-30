@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
 
-@interface CameraRollViewController : UIViewController{
-    ALAssetsLibrary* library;
+@interface CameraRollViewController : UIViewController<UIImagePickerControllerDelegate>{
+    UIImagePickerController *imagePicker;
 }
 
 @end
