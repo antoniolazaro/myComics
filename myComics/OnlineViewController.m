@@ -237,9 +237,7 @@
             currentImage = [images objectAtIndex:i];
 
             //Aplica um filtro Qualquer
-//            CIImage *image = [CIImage imageWithContentsOfURL:fileNameAndPath];
-
-            CIImage *ciImage = currentImage.CIImage;
+            CIImage *ciImage = [[CIImage alloc] initWithImage:currentImage];;
             
             CIContext *context = [CIContext contextWithOptions:nil];
             
