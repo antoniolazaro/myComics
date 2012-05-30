@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreImage/CoreImage.h>
+#import <CoreMedia/CoreMedia.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface CameraRollViewController : UIViewController{
+@interface CameraRollViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
+    UIImagePickerController *imagePickerController;
     ALAssetsLibrary* library;
+    NSMutableArray *imagesListFromLibrary;
 }
+
+@property (nonatomic, retain) UIImagePickerController *imagePickerController;
+
+-(IBAction)openLibrary;
 
 @end

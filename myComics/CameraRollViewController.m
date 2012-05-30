@@ -14,6 +14,8 @@
 
 @implementation CameraRollViewController
 
+@synthesize imagePickerController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,8 +31,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    library = [[ALAssetsLibrary alloc] init];
-    [self updateAssetsLibrary];
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+    
+    
+    imagesListFromLibrary = [[NSMutableArray alloc]init];
+    
 }
 
 
@@ -45,38 +53,48 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)updateAssetsLibrary
+
+-(IBAction)openLibrary{
+    [self presentModalViewController:self.imagePickerController animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSLog(@"Escolheu um video...");
+    
+    NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
+    [self generateImageFromVideoLibrary:videoURL];
+    
+    NSLog(@"tamanho final array -> %i",imagesListFromLibrary.count);
+}
+
+-(void)generateImageFromVideoLibrary:(NSURL *)videoURL
 {
-	NSMutableArray *assetItems = [NSMutableArray arrayWithCapacity:0];
-	ALAssetsLibrary *assetLibrary = library;
-	
-	[assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        if (group) {
-            [group setAssetsFilter:[ALAssetsFilter allVideos]];
-            [group enumerateAssetsUsingBlock:
-             ^(ALAsset *asset, NSUInteger index, BOOL *stop)
-             {
-                 if (asset) {
-                     ALAssetRepresentation *defaultRepresentation = [asset defaultRepresentation];
-                     NSString *uti = [defaultRepresentation UTI];
-                     NSURL *URL = [[asset valueForProperty:ALAssetPropertyURLs] valueForKey:uti];
-                     NSString *title = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Video", nil), [assetItems count]+1];
-//                     AssetBrowserItem *item = [[[AssetBrowserItem alloc] initWithURL:URL title:title] autorelease];
-//                     
-//                     [assetItems addObject:item];
-                 }
-             }];
+    AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    
+    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
+    NSValue *thumbnailTime = [NSValue valueWithCMTime:thumbTime];
+    NSArray *imageGenerationTimes = [NSArray arrayWithObject:thumbnailTime];    
+    
+    AVAssetImageGeneratorCompletionHandler handler =
+    ^(CMTime requestedTime, CGImageRef image, CMTime actualTime,
+      AVAssetImageGeneratorResult result, NSError *error) {
+        if (result != AVAssetImageGeneratorSucceeded) {
+            NSLog(@"Couldn't generate thumbnail, error:%@", error);
         }
-		// group == nil signals we are done iterating.
-		else {
-//			dispatch_async(dispatch_get_main_queue(), ^{
-//				[self updateBrowserItemsAndSignalDelegate:assetItems];
-//			});
-		}
-	}
-                              failureBlock:^(NSError *error) {
-                                  NSLog(@"error enumerating AssetLibrary groups %@\n", error);
-                              }];
+        NSLog(@"vai gravar imagem ");
+        [imagesListFromLibrary addObject:[UIImage imageWithCGImage:image]];
+    };
+    
+    [imageGenerator generateCGImagesAsynchronouslyForTimes:imageGenerationTimes
+                                         completionHandler:handler];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    NSLog(@"Cancelou a selecao de um video..");
+    [imagePickerController dismissModalViewControllerAnimated:YES];
 }
 
 @end

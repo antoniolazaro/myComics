@@ -24,6 +24,10 @@
 		7D7A5F8815587FFC003014E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7A5F8715587FFC003014E8 /* AppDelegate.m */; };
 		7D7A5F8B15587FFD003014E8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A5F8915587FFD003014E8 /* MainStoryboard.storyboard */; };
 		7D7A5F8E15587FFD003014E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7A5F8D15587FFD003014E8 /* ViewController.m */; };
+		7D9AAC041575B8CD00A41E31 /* FileSharingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AAC031575B8CD00A41E31 /* FileSharingViewController.m */; };
+		7D9AAC081575B8DE00A41E31 /* IpodLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AAC071575B8DE00A41E31 /* IpodLibraryViewController.m */; };
+		7D9AAC091575BDBA00A41E31 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21FAE61560C2240048E1DE /* CoreImage.framework */; };
+		7D9AAC0A1575BE7900A41E31 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21FAE11560C1CA0048E1DE /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		7D7A5F8A15587FFD003014E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		7D7A5F8C15587FFD003014E8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7D7A5F8D15587FFD003014E8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7D9AAC021575B8CD00A41E31 /* FileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSharingViewController.h; sourceTree = "<group>"; };
+		7D9AAC031575B8CD00A41E31 /* FileSharingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSharingViewController.m; sourceTree = "<group>"; };
+		7D9AAC061575B8DE00A41E31 /* IpodLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpodLibraryViewController.h; sourceTree = "<group>"; };
+		7D9AAC071575B8DE00A41E31 /* IpodLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpodLibraryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D9AAC0A1575BE7900A41E31 /* MobileCoreServices.framework in Frameworks */,
+				7D9AAC091575BDBA00A41E31 /* CoreImage.framework in Frameworks */,
 				7D21FAE91560C2550048E1DE /* CoreVideo.framework in Frameworks */,
 				7D21FAE51560C2160048E1DE /* CoreMedia.framework in Frameworks */,
 				7D21FAE31560C1EA0048E1DE /* CoreGraphics.framework in Frameworks */,
@@ -123,6 +133,10 @@
 				7D7A5F8615587FFC003014E8 /* AppDelegate.h */,
 				7D7A5F8715587FFC003014E8 /* AppDelegate.m */,
 				7D7A5F8915587FFD003014E8 /* MainStoryboard.storyboard */,
+				7D9AAC021575B8CD00A41E31 /* FileSharingViewController.h */,
+				7D9AAC031575B8CD00A41E31 /* FileSharingViewController.m */,
+				7D9AAC061575B8DE00A41E31 /* IpodLibraryViewController.h */,
+				7D9AAC071575B8DE00A41E31 /* IpodLibraryViewController.m */,
 				7D21FAD81560BBE80048E1DE /* CameraRollViewController.h */,
 				7D21FAD91560BBE80048E1DE /* CameraRollViewController.m */,
 				7D21FAD115609DC90048E1DE /* OnlineViewController.h */,
@@ -215,6 +229,8 @@
 				7D7A5F8E15587FFD003014E8 /* ViewController.m in Sources */,
 				7D21FAD315609DC90048E1DE /* OnlineViewController.m in Sources */,
 				7D21FADA1560BBE90048E1DE /* CameraRollViewController.m in Sources */,
+				7D9AAC041575B8CD00A41E31 /* FileSharingViewController.m in Sources */,
+				7D9AAC081575B8DE00A41E31 /* IpodLibraryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

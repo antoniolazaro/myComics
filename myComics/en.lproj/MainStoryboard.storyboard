@@ -21,11 +21,11 @@
             </objects>
             <point key="canvasLocation" x="-329" y="58"/>
         </scene>
-        <!--View Controller - Ipod Library-->
+        <!--Ipod Library View Controller - Ipod Library-->
         <scene sceneID="AkW-Wq-HCK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4BM-ej-nJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="RG8-jE-ToA" sceneMemberID="viewController">
+                <viewController id="RG8-jE-ToA" customClass="IpodLibraryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="43s-pL-Ykv">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,11 +36,11 @@
             </objects>
             <point key="canvasLocation" x="629" y="578"/>
         </scene>
-        <!--View Controller - File Sharing-->
+        <!--File Sharing View Controller - File Sharing-->
         <scene sceneID="YYA-ox-KCR">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bO7-5o-e13" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="P0n-BI-MRM" sceneMemberID="viewController">
+                <viewController id="P0n-BI-MRM" customClass="FileSharingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6g-Wj-l5Q">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +59,23 @@
                     <view key="view" contentMode="scaleToFill" id="5mO-jv-CbJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wqa-LD-Z8W">
+                                <rect key="frame" x="94" y="134" width="115" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Abrir Library">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openLibrary" destination="VuD-id-BDT" eventType="touchUpInside" id="evo-J6-2so"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera Roll" id="7On-jL-eqT"/>
@@ -153,6 +170,15 @@
     <classes>
         <class className="CameraRollViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraRollViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openLibrary"/>
+            </relationships>
+        </class>
+        <class className="FileSharingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileSharingViewController.h"/>
+        </class>
+        <class className="IpodLibraryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IpodLibraryViewController.h"/>
         </class>
         <class className="OnlineViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OnlineViewController.h"/>
