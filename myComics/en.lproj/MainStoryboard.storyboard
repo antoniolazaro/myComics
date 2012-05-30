@@ -21,37 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-329" y="58"/>
         </scene>
-        <!--Ipod Library View Controller - Ipod Library-->
-        <scene sceneID="AkW-Wq-HCK">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4BM-ej-nJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="RG8-jE-ToA" customClass="IpodLibraryViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="43s-pL-Ykv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Ipod Library" id="JVA-Cz-kmJ"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="629" y="578"/>
-        </scene>
-        <!--File Sharing View Controller - File Sharing-->
-        <scene sceneID="YYA-ox-KCR">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bO7-5o-e13" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="P0n-BI-MRM" customClass="FileSharingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z6g-Wj-l5Q">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="File Sharing" id="9mz-WK-Myx"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="933" y="58"/>
-        </scene>
-        <!--Camera Roll View Controller - Camera Roll-->
+        <!--Camera Roll View Controller - Offline-->
         <scene sceneID="c2T-yd-Jat">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V43-Mu-DIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -61,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wqa-LD-Z8W">
-                                <rect key="frame" x="94" y="134" width="115" height="37"/>
+                                <rect key="frame" x="103" y="20" width="115" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Abrir Library">
@@ -75,10 +45,32 @@
                                     <action selector="openLibrary" destination="VuD-id-BDT" eventType="touchUpInside" id="evo-J6-2so"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="asT-VL-E9M">
+                                <rect key="frame" x="49" y="111" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wZJ-wX-7Aw">
+                                <rect key="frame" x="49" y="282" width="224" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Generate Image from movie">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="generateImageFromLibrary" destination="VuD-id-BDT" eventType="touchUpInside" id="xc4-3c-UCD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera Roll" id="7On-jL-eqT"/>
+                    <tabBarItem key="tabBarItem" title="Offline" id="7On-jL-eqT"/>
+                    <connections>
+                        <outlet property="previewFromLibrary" destination="asT-VL-E9M" id="6Sn-uF-L1o"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="917" y="-526"/>
@@ -99,8 +91,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="VuD-id-BDT" kind="relationship" relationship="viewControllers" id="4pk-Sc-0iE"/>
-                        <segue destination="P0n-BI-MRM" kind="relationship" relationship="viewControllers" id="MZU-ZY-rvb"/>
-                        <segue destination="RG8-jE-ToA" kind="relationship" relationship="viewControllers" id="hzb-vd-cUF"/>
                         <segue destination="2wP-Hl-FpW" kind="relationship" relationship="viewControllers" id="Woo-Gn-gHV"/>
                     </connections>
                 </tabBarController>
@@ -172,13 +162,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CameraRollViewController.h"/>
             <relationships>
                 <relationship kind="action" name="openLibrary"/>
+                <relationship kind="outlet" name="previewFromLibrary" candidateClass="UIImageView"/>
             </relationships>
-        </class>
-        <class className="FileSharingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileSharingViewController.h"/>
-        </class>
-        <class className="IpodLibraryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IpodLibraryViewController.h"/>
         </class>
         <class className="OnlineViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OnlineViewController.h"/>

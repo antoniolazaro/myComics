@@ -4,15 +4,15 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "myComics/CameraRollViewController.m"
-         timestampString = "360043575.38075"
+         timestampString = "360092002.055896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,26 +21,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "myComics/CameraRollViewController.m"
-         timestampString = "360043575.38075"
+         timestampString = "360092002.055896"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
-         landmarkName = "-generateImageFromVideoLibrary:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "myComics/CameraRollViewController.m"
-         timestampString = "360043575.38075"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
-         landmarkName = "-generateImageFromVideoLibrary:"
-         landmarkType = "5">
+         startingLineNumber = "16"
+         endingLineNumber = "16"
+         landmarkName = "previewFromLibrary"
+         landmarkType = "19">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

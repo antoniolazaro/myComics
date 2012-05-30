@@ -13,8 +13,7 @@
 @end
 
 @implementation CameraRollViewController
-
-@synthesize imagePickerController;
+@synthesize previewFromLibrary;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,20 +30,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.imagePickerController = [[UIImagePickerController alloc] init];
-    self.imagePickerController.delegate = self;
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-    
-    
+    mediaPickerControler = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMovie];
+    mediaPickerControler.delegate = self;
+    mediaPickerControler.prompt = @"Selecionar vídeo";
     imagesListFromLibrary = [[NSMutableArray alloc]init];
-    
 }
 
 
 - (void)viewDidUnload
 {
+    previewFromLibrary = nil;
     [super viewDidUnload];
+    [self setPreviewFromLibrary:nil];
     // Release any retained subviews of the main view.
 }
 
@@ -55,46 +52,17 @@
 
 
 -(IBAction)openLibrary{
-    [self presentModalViewController:self.imagePickerController animated:YES];
+    [self presentModalViewController:mediaPickerControler animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSLog(@"Escolheu um video...");
     
     NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
-    [self generateImageFromVideoLibrary:videoURL];
-    
-    NSLog(@"tamanho final array -> %i",imagesListFromLibrary.count);
+   // [self generateImageFromVideoLibrary:videoURL];
+
 }
 
--(void)generateImageFromVideoLibrary:(NSURL *)videoURL
-{
-    AVURLAsset *asset=[[AVURLAsset alloc] initWithURL:videoURL options:nil];
-    
-    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    
-    CMTime thumbTime = CMTimeMakeWithSeconds(0,30);
-    NSValue *thumbnailTime = [NSValue valueWithCMTime:thumbTime];
-    NSArray *imageGenerationTimes = [NSArray arrayWithObject:thumbnailTime];    
-    
-    AVAssetImageGeneratorCompletionHandler handler =
-    ^(CMTime requestedTime, CGImageRef image, CMTime actualTime,
-      AVAssetImageGeneratorResult result, NSError *error) {
-        if (result != AVAssetImageGeneratorSucceeded) {
-            NSLog(@"Couldn't generate thumbnail, error:%@", error);
-        }
-        NSLog(@"vai gravar imagem ");
-        [imagesListFromLibrary addObject:[UIImage imageWithCGImage:image]];
-    };
-    
-    [imageGenerator generateCGImagesAsynchronouslyForTimes:imageGenerationTimes
-                                         completionHandler:handler];
-    
-}
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    NSLog(@"Cancelou a selecao de um video..");
-    [imagePickerController dismissModalViewControllerAnimated:YES];
-}
 
 @end

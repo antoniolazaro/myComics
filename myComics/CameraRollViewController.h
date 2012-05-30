@@ -7,19 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <AVFoundation/AVFoundation.h>
-#import <CoreImage/CoreImage.h>
-#import <CoreMedia/CoreMedia.h>
-#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface CameraRollViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
-    UIImagePickerController *imagePickerController;
-    ALAssetsLibrary* library;
+@interface CameraRollViewController : UIViewController <MPMediaPickerControllerDelegate>{
+    
+    MPMediaPickerController *mediaPickerControler;
+
     NSMutableArray *imagesListFromLibrary;
 }
 
-@property (nonatomic, retain) UIImagePickerController *imagePickerController;
+
+@property (weak, nonatomic) IBOutlet UIImageView *previewFromLibrary;
 
 -(IBAction)openLibrary;
 
