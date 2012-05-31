@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface CameraRollViewController : UIViewController<UIImagePickerControllerDelegate>{
     UIImagePickerController *imagePicker;
