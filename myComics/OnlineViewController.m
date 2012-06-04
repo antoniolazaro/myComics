@@ -184,6 +184,75 @@
     return (image);
 }
 
+- (UIImage*)imageWithBorderFromImage:(UIImage*)source;
+{
+    CGSize size = [source size];
+    
+    // inicia o image context com o tamanho da imagem original
+    UIGraphicsBeginImageContext(size);
+    
+    // desenha a imagem no quadrado
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    [source drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    // obtem o contexto atual
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // desenha a borda
+    CGContextSetRGBStrokeColor(context, 0, 0, 0, 1.0); 
+    CGContextStrokeRect(context, rect);
+    
+    CGContextSetLineWidth(context, 5.0);
+    
+    // obtem a imagem do image context
+    UIImage *testImg =  UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return testImg;
+    
+}
+
+- (UIImage *)imageFromLayer:(CALayer *)layer
+{
+    
+    UIGraphicsBeginImageContext([layer frame].size);
+    
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return outputImage;
+    
+}
+
+- (UIImage *)imageWithRoundedBorderFromImage:(UIImage *)image
+{
+    
+    CALayer *sublayer = [CALayer layer];
+    sublayer.backgroundColor = [UIColor blueColor].CGColor;
+    sublayer.shadowOffset = CGSizeMake(0, 3);
+    // não precisa da sombra
+    //sublayer.shadowRadius = 5.0;
+    //sublayer.shadowColor = [UIColor blackColor].CGColor;
+    sublayer.shadowOpacity = 0.8;
+    sublayer.frame = CGRectMake(30, 30, 128, 192);
+    sublayer.borderColor = [UIColor blackColor].CGColor;
+    sublayer.borderWidth = 2.0;
+    sublayer.cornerRadius = 10.0;
+    
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.frame = sublayer.bounds;
+    imageLayer.cornerRadius = 10.0;
+    imageLayer.contents = (id) image.CGImage;
+    imageLayer.masksToBounds = YES;
+    [sublayer addSublayer:imageLayer];
+    
+    return [self imageFromLayer:sublayer];
+    
+}
+
 - (CGRect) criarQuadroNalinha:(int)linha naColuna:(int)coluna comQuadrinhoMaior:(BOOL)quadrinhoMaior {
     
     // diminui pois é baseado em zero
@@ -232,8 +301,13 @@
         
         if (i % 8 == 0) {
             
-            // escreve iron como um quadrinho maior na linha 1 e coluna 1 ocupando toda a linha
-            [[images objectAtIndex:i] drawInRect:[self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO]];
+            UIImage* image = [images objectAtIndex:i];
+            // cria a borda
+            image = [self imageWithRoundedBorderFromImage:image];
+            // cria o quadrinho
+            CGRect square = [self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO];
+            // cria a imagem no quadrinho
+            [image drawInRect:square];
             
             if (coluna == 2) {
                 linha++;
