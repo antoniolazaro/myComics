@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D8B7467157D6897002C2D92 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D21FAE61560C2240048E1DE /* CoreImage.framework */; };
+		0D8B746A157D6958002C2D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8B7469157D6958002C2D92 /* QuartzCore.framework */; };
 		395008F8155B20D800AA04FB /* ironman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008F6155B20D800AA04FB /* ironman.jpg */; };
 		395008FB155B20F300AA04FB /* hulk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 395008FA155B20F300AA04FB /* hulk.jpg */; };
 		39500946155B2B9200AA04FB /* thor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39500945155B2B9200AA04FB /* thor.jpg */; };
@@ -28,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D8B7469157D6958002C2D92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		395008F6155B20D800AA04FB /* ironman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ironman.jpg; sourceTree = "<group>"; };
 		395008FA155B20F300AA04FB /* hulk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hulk.jpg; sourceTree = "<group>"; };
 		39500945155B2B9200AA04FB /* thor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thor.jpg; sourceTree = "<group>"; };
@@ -61,7 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39D5730C156D91D800A6CD3D /* CoreImage.framework in Frameworks */,
+
+				0D8B746A157D6958002C2D92 /* QuartzCore.framework in Frameworks */,
+				0D8B7467157D6897002C2D92 /* CoreImage.framework in Frameworks */,
 				7D21FAE91560C2550048E1DE /* CoreVideo.framework in Frameworks */,
 				7D21FAE51560C2160048E1DE /* CoreMedia.framework in Frameworks */,
 				7D21FAE31560C1EA0048E1DE /* CoreGraphics.framework in Frameworks */,
@@ -88,6 +93,7 @@
 		7D7A5F6815587FFC003014E8 = {
 			isa = PBXGroup;
 			children = (
+				0D8B7469157D6958002C2D92 /* QuartzCore.framework */,
 				7D7A5F7D15587FFC003014E8 /* myComics */,
 				7D7A5F7615587FFC003014E8 /* Frameworks */,
 				7D7A5F7415587FFC003014E8 /* Products */,
