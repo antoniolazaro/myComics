@@ -228,8 +228,9 @@
     CALayer *sublayer = [CALayer layer];
     sublayer.backgroundColor = [UIColor blueColor].CGColor;
     sublayer.shadowOffset = CGSizeMake(0, 3);
-    sublayer.shadowRadius = 5.0;
-    sublayer.shadowColor = [UIColor blackColor].CGColor;
+    // não precisa da sombra
+    //sublayer.shadowRadius = 5.0;
+    //sublayer.shadowColor = [UIColor blackColor].CGColor;
     sublayer.shadowOpacity = 0.8;
     sublayer.frame = CGRectMake(30, 30, 128, 192);
     sublayer.borderColor = [UIColor blackColor].CGColor;
