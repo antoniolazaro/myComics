@@ -170,14 +170,9 @@
     CGContextRelease(context); 
     CGColorSpaceRelease(colorSpace);
     
-    // Create an image object from the Quartz image
-    //UIImage *image = [UIImage imageWithCGImage:quartzImage];
-    
     //cria a imagem com a orientação correta...
-    UIImage *image = [UIImage imageWithCGImage:quartzImage scale:1.0
-                  orientation:UIImageOrientationRight]; 
-
-    
+    UIImage *image = [UIImage imageWithCGImage:quartzImage scale:1.0 orientation:UIImageOrientationRight]; 
+        
     // Release the Quartz image
     CGImageRelease(quartzImage);
     
@@ -233,10 +228,10 @@
     CALayer *sublayer = [CALayer layer];
     sublayer.backgroundColor = [UIColor blueColor].CGColor;
     sublayer.shadowOffset = CGSizeMake(0, 3);
+    sublayer.shadowRadius = 5.0;
     // não precisa da sombra
-    //sublayer.shadowRadius = 5.0;
     //sublayer.shadowColor = [UIColor blackColor].CGColor;
-    sublayer.shadowOpacity = 0.8;
+    //sublayer.shadowOpacity = 0.8;
     sublayer.frame = CGRectMake(30, 30, 128, 192);
     sublayer.borderColor = [UIColor blackColor].CGColor;
     sublayer.borderWidth = 2.0;
@@ -318,15 +313,15 @@
             
             CGImageRef cgimg = [context createCGImage:ciImage fromRect:[ciImage extent]];
             
-            currentImage = [UIImage imageWithCGImage:cgimg];
+            currentImage = [UIImage imageWithCGImage:cgimg scale:1.0 orientation:UIImageOrientationRight];
             
-            UIImage* image = [images objectAtIndex:i];
+            //UIImage* image = [images objectAtIndex:i];
             // cria a borda
-            image = [self imageWithRoundedBorderFromImage:image];
+            currentImage = [self imageWithRoundedBorderFromImage:currentImage];
             // cria o quadrinho
             CGRect square = [self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO];
             // cria a imagem no quadrinho
-            [image drawInRect:square];
+            [currentImage drawInRect:square];
             
             if (coluna == 2) {
                 linha++;
