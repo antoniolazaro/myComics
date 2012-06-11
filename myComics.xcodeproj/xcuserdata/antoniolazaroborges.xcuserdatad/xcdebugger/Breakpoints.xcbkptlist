@@ -8,11 +8,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "myComics/OnlineViewController.m"
-         timestampString = "360667323.220428"
+         timestampString = "361071359.548789"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "320"
-         endingLineNumber = "320">
+         startingLineNumber = "322"
+         endingLineNumber = "322"
+         landmarkName = "-createImage:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "myComics/OnlineViewController.m"
+         timestampString = "361071359.548789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "322"
+         endingLineNumber = "322"
+         landmarkName = "-createImage:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

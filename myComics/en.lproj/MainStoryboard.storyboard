@@ -21,36 +21,6 @@
             </objects>
             <point key="canvasLocation" x="-329" y="58"/>
         </scene>
-        <!--View Controller - Ipod Library-->
-        <scene sceneID="AkW-Wq-HCK">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4BM-ej-nJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="RG8-jE-ToA" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="43s-pL-Ykv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Ipod Library" id="JVA-Cz-kmJ"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="629" y="578"/>
-        </scene>
-        <!--View Controller - File Sharing-->
-        <scene sceneID="YYA-ox-KCR">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bO7-5o-e13" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="P0n-BI-MRM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z6g-Wj-l5Q">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="File Sharing" id="9mz-WK-Myx"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="933" y="58"/>
-        </scene>
         <!--Camera Roll View Controller - Camera Roll-->
         <scene sceneID="c2T-yd-Jat">
             <objects>
@@ -64,7 +34,7 @@
                     <tabBarItem key="tabBarItem" title="Camera Roll" id="7On-jL-eqT"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="917" y="-526"/>
+            <point key="canvasLocation" x="585" y="270"/>
         </scene>
         <!--Tab Bar Controller - Tab Bar-->
         <scene sceneID="u8V-c0-sli">
@@ -82,8 +52,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="VuD-id-BDT" kind="relationship" relationship="viewControllers" id="4pk-Sc-0iE"/>
-                        <segue destination="P0n-BI-MRM" kind="relationship" relationship="viewControllers" id="MZU-ZY-rvb"/>
-                        <segue destination="RG8-jE-ToA" kind="relationship" relationship="viewControllers" id="hzb-vd-cUF"/>
                         <segue destination="2wP-Hl-FpW" kind="relationship" relationship="viewControllers" id="Woo-Gn-gHV"/>
                     </connections>
                 </tabBarController>
@@ -147,7 +115,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="498" y="-819"/>
+            <point key="canvasLocation" x="630" y="-407"/>
         </scene>
     </scenes>
     <classes>

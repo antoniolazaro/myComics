@@ -318,6 +318,9 @@
             //UIImage* image = [images objectAtIndex:i];
             // cria a borda
             currentImage = [self imageWithRoundedBorderFromImage:currentImage];
+            
+            currentImage = [currentImage initWithCGImage:currentImage.CGImage scale:1.0 orientation:UIImageOrientationRight];
+            
             // cria o quadrinho
             CGRect square = [self criarQuadroNalinha:linha naColuna:coluna comQuadrinhoMaior:NO];
             // cria a imagem no quadrinho
