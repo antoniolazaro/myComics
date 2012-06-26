@@ -11,7 +11,17 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface CameraRollViewController : UIViewController<UIImagePickerControllerDelegate>{
+    NSMutableArray *imagesListFromLibrary;
     UIImagePickerController *imagePicker;
+    MPMoviePlayerController *player;
 }
+
+@property (strong, nonatomic) IBOutlet UIImageView *previewFromLibrary;
+
+-(IBAction)openPhotoLibrary;
+
+-(IBAction)gerarImagemPhotoLibrary;
+
+-(IBAction)generateImageFromLibrary;
 
 @end
