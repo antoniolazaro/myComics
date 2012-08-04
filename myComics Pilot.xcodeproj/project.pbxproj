@@ -23,6 +23,7 @@
 		3943CD941599452E000CE209 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3943CD6A1599452D000CE209 /* Foundation.framework */; };
 		3943CD9C1599452E000CE209 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3943CD9A1599452E000CE209 /* InfoPlist.strings */; };
 		3943CD9F1599452E000CE209 /* myComics_PilotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3943CD9E1599452E000CE209 /* myComics_PilotTests.m */; };
+		39E0431B15CD76EB0012597B /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 398D45E915CD759D0005464B /* libGPUImage.a */; };
 		39E3B0A7159A1869003E1977 /* backgruond.png in Resources */ = {isa = PBXBuildFile; fileRef = 39E3B0A6159A1869003E1977 /* backgruond.png */; };
 		39FA4755159A9C3F001FAAE4 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4753159A9C3F001FAAE4 /* movie.png */; };
 		39FA4756159A9C3F001FAAE4 /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4754159A9C3F001FAAE4 /* photos.png */; };
@@ -32,7 +33,6 @@
 		39FA4763159AA3C1001FAAE4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA4762159AA3C1001FAAE4 /* CoreMedia.framework */; };
 		39FA4767159AA3D2001FAAE4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA4766159AA3D2001FAAE4 /* CoreVideo.framework */; };
 		39FA476D159AA960001FAAE4 /* red_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 39FA476C159AA960001FAAE4 /* red_button.png */; };
-		39FA4788159AAC31001FAAE4 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA4780159AAC21001FAAE4 /* libGPUImage.a */; };
 		39FA4796159AAF8F001FAAE4 /* comic1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4793159AAF8F001FAAE4 /* comic1.jpg */; };
 		39FA4797159AAF8F001FAAE4 /* comic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4794159AAF8F001FAAE4 /* comic2.jpg */; };
 		39FA4798159AAF8F001FAAE4 /* comic3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4795159AAF8F001FAAE4 /* comic3.jpg */; };
@@ -47,23 +47,23 @@
 			remoteGlobalIDString = 3943CD631599452D000CE209;
 			remoteInfo = "myComics Pilot";
 		};
-		39FA477F159AAC21001FAAE4 /* PBXContainerItemProxy */ = {
+		398D45E815CD759D0005464B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */;
+			containerPortal = 398D45E215CD759D0005464B /* GPUImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
 			remoteInfo = GPUImage;
 		};
-		39FA4781159AAC21001FAAE4 /* PBXContainerItemProxy */ = {
+		398D45EA15CD759D0005464B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */;
+			containerPortal = 398D45E215CD759D0005464B /* GPUImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
 			remoteInfo = GPUImageTests;
 		};
-		39FA4786159AAC2A001FAAE4 /* PBXContainerItemProxy */ = {
+		39E0431915CD76E40012597B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */;
+			containerPortal = 398D45E215CD759D0005464B /* GPUImage.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
 			remoteInfo = GPUImage;
@@ -94,6 +94,7 @@
 		3943CD9B1599452E000CE209 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3943CD9D1599452E000CE209 /* myComics_PilotTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myComics_PilotTests.h; sourceTree = "<group>"; };
 		3943CD9E1599452E000CE209 /* myComics_PilotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myComics_PilotTests.m; sourceTree = "<group>"; };
+		398D45E215CD759D0005464B /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = lib/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		39E3B0A6159A1869003E1977 /* backgruond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgruond.png; sourceTree = "<group>"; };
 		39FA4753159A9C3F001FAAE4 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 		39FA4754159A9C3F001FAAE4 /* photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos.png; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		39FA4762159AA3C1001FAAE4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		39FA4766159AA3D2001FAAE4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		39FA476C159AA960001FAAE4 /* red_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_button.png; sourceTree = "<group>"; };
-		39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		39FA4793159AAF8F001FAAE4 /* comic1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic1.jpg; sourceTree = "<group>"; };
 		39FA4794159AAF8F001FAAE4 /* comic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic2.jpg; sourceTree = "<group>"; };
 		39FA4795159AAF8F001FAAE4 /* comic3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic3.jpg; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				393245EE15CCB8C800B1CF35 /* OpenGLES.framework in Frameworks */,
+				39E0431B15CD76EB0012597B /* libGPUImage.a in Frameworks */,
 				393245EC15CCB85700B1CF35 /* MobileCoreServices.framework in Frameworks */,
 				393245EA15CCB7F300B1CF35 /* CoreImage.framework in Frameworks */,
-				39FA4788159AAC31001FAAE4 /* libGPUImage.a in Frameworks */,
 				39FA4767159AA3D2001FAAE4 /* CoreVideo.framework in Frameworks */,
 				39FA4763159AA3C1001FAAE4 /* CoreMedia.framework in Frameworks */,
 				3943CD691599452D000CE209 /* UIKit.framework in Frameworks */,
@@ -144,6 +144,7 @@
 		3943CD591599452D000CE209 = {
 			isa = PBXGroup;
 			children = (
+				398D45E215CD759D0005464B /* GPUImage.xcodeproj */,
 				3943CD6E1599452D000CE209 /* myComics Pilot */,
 				3943CD971599452E000CE209 /* myComics PilotTests */,
 				3943CD671599452D000CE209 /* Frameworks */,
@@ -166,7 +167,6 @@
 				393245ED15CCB8C800B1CF35 /* OpenGLES.framework */,
 				393245EB15CCB85700B1CF35 /* MobileCoreServices.framework */,
 				393245E915CCB7F300B1CF35 /* CoreImage.framework */,
-				39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */,
 				39FA4766159AA3D2001FAAE4 /* CoreVideo.framework */,
 				39FA4762159AA3C1001FAAE4 /* CoreMedia.framework */,
 				39FA4760159AA39B001FAAE4 /* QuartzCore.framework */,
@@ -224,6 +224,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		398D45E315CD759D0005464B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				398D45E915CD759D0005464B /* libGPUImage.a */,
+				398D45EB15CD759D0005464B /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		39E3B09E159A16A4003E1977 /* pics */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,15 +249,6 @@
 			name = pics;
 			sourceTree = "<group>";
 		};
-		39FA4778159AAC20001FAAE4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				39FA4780159AAC21001FAAE4 /* libGPUImage.a */,
-				39FA4782159AAC21001FAAE4 /* GPUImageTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,7 +263,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				39FA4787159AAC2A001FAAE4 /* PBXTargetDependency */,
+				39E0431A15CD76E40012597B /* PBXTargetDependency */,
 			);
 			name = "myComics Pilot";
 			productName = "myComics Pilot";
@@ -310,8 +310,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 39FA4778159AAC20001FAAE4 /* Products */;
-					ProjectRef = 39FA4777159AAC20001FAAE4 /* GPUImage.xcodeproj */;
+					ProductGroup = 398D45E315CD759D0005464B /* Products */;
+					ProjectRef = 398D45E215CD759D0005464B /* GPUImage.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -323,18 +323,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		39FA4780159AAC21001FAAE4 /* libGPUImage.a */ = {
+		398D45E915CD759D0005464B /* libGPUImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libGPUImage.a;
-			remoteRef = 39FA477F159AAC21001FAAE4 /* PBXContainerItemProxy */;
+			remoteRef = 398D45E815CD759D0005464B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		39FA4782159AAC21001FAAE4 /* GPUImageTests.octest */ = {
+		398D45EB15CD759D0005464B /* GPUImageTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GPUImageTests.octest;
-			remoteRef = 39FA4781159AAC21001FAAE4 /* PBXContainerItemProxy */;
+			remoteRef = 398D45EA15CD759D0005464B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -412,10 +412,10 @@
 			target = 3943CD631599452D000CE209 /* myComics Pilot */;
 			targetProxy = 3943CD951599452E000CE209 /* PBXContainerItemProxy */;
 		};
-		39FA4787159AAC2A001FAAE4 /* PBXTargetDependency */ = {
+		39E0431A15CD76E40012597B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GPUImage;
-			targetProxy = 39FA4786159AAC2A001FAAE4 /* PBXContainerItemProxy */;
+			targetProxy = 39E0431915CD76E40012597B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -467,10 +467,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../GPUImage/framework/;
+				HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				USER_HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 			};
 			name = Debug;
 		};
@@ -487,11 +487,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../GPUImage/framework/;
+				HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				USER_HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -501,8 +501,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myComics Pilot/myComics Pilot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				INFOPLIST_FILE = "myComics Pilot/myComics Pilot-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -512,8 +514,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myComics Pilot/myComics Pilot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				INFOPLIST_FILE = "myComics Pilot/myComics Pilot-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./lib/GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
