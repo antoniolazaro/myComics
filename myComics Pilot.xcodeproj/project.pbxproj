@@ -37,6 +37,7 @@
 		39FA4797159AAF8F001FAAE4 /* comic2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4794159AAF8F001FAAE4 /* comic2.jpg */; };
 		39FA4798159AAF8F001FAAE4 /* comic3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4795159AAF8F001FAAE4 /* comic3.jpg */; };
 		39FA479A159AAFEE001FAAE4 /* comic4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39FA4799159AAFEE001FAAE4 /* comic4.jpg */; };
+		7D2110DA15DB489000A5C2A8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2110D915DB489000A5C2A8 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		39FA4794159AAF8F001FAAE4 /* comic2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic2.jpg; sourceTree = "<group>"; };
 		39FA4795159AAF8F001FAAE4 /* comic3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic3.jpg; sourceTree = "<group>"; };
 		39FA4799159AAFEE001FAAE4 /* comic4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comic4.jpg; sourceTree = "<group>"; };
+		7D2110D915DB489000A5C2A8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2110DA15DB489000A5C2A8 /* MediaPlayer.framework in Frameworks */,
 				393245EE15CCB8C800B1CF35 /* OpenGLES.framework in Frameworks */,
 				39E0431B15CD76EB0012597B /* libGPUImage.a in Frameworks */,
 				393245EC15CCB85700B1CF35 /* MobileCoreServices.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		3943CD671599452D000CE209 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D2110D915DB489000A5C2A8 /* MediaPlayer.framework */,
 				393245ED15CCB8C800B1CF35 /* OpenGLES.framework */,
 				393245EB15CCB85700B1CF35 /* MobileCoreServices.framework */,
 				393245E915CCB7F300B1CF35 /* CoreImage.framework */,

@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import "GPUImageToonFilter.h"
 
-@interface MCGalleryViewController : UIViewController
+@interface MCGalleryViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+    
+    UIImagePickerController *imagePickController;
+    MPMoviePlayerController *player;
+    NSMutableArray *imagesList;
+    AVAssetImageGenerator *imageGenerator;
+}
+
+@property (strong, nonatomic) IBOutlet UIImageView *preview;
+
+-(IBAction)openLibrary;
+-(IBAction)generateComics;
 
 @end
